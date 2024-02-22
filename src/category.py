@@ -9,5 +9,5 @@ class Category:
         self.name = name
         self.description = description
         self.product = product
-        self.count_category += 1git
+        self.count_category += 1
         self.count_product += len(product)
