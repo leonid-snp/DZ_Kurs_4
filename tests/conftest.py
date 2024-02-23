@@ -6,12 +6,16 @@ from utils.pars_json import creates_instance_class
 
 @pytest.fixture
 def test_category():
-    return Category("Смартфоны", "Средство связи", ["a", "b", "c"])
+    instance_category, instance_product = creates_instance_class()
+    for category in instance_category:
+        return Category(*category)
 
 
 @pytest.fixture
 def test_product():
-    return Product("Samsung", "Топ смартфон", 80_000.0, 7)
+    instance_category, instance_product = creates_instance_class()
+    for product in instance_product:
+        return Product(*product)
 
 
 @pytest.fixture
