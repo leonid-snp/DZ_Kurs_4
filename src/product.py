@@ -12,6 +12,22 @@ class Product:
         self._price = price
         self.quantity = quantity
 
+    def __str__(self) -> str:
+        """
+        Функция отображает определенные данные в строковом формате
+
+        :return (str) название продукта, цена, остаток
+        """
+        return f"{self.name}, {self._price} руб. Остаток: {self.quantity} шт."
+
+    def __add__(self, other) -> float:
+        """
+        Функция складывает цену и количество продуктов
+
+        :return (float) общая стоимость продуктов
+        """
+        return (self._price * self.quantity) + (other._price * other.quantity)
+
     @property
     def price(self) -> float:
         """
@@ -43,15 +59,12 @@ class Product:
             self._price = value
 
     @classmethod
-    def creates_product(cls, product: dict, list_product: list) -> object:
+    def creates_product(cls, product: dict) -> object:
         """
         Классметод который принимает словарь и создает новый объект класса Product
 
         :product (dict) продукт по которому создаст объект
-        :list_product (list) список с уже имеющимися продуктами
 
         :return (object) объект класса Product
         """
-        for name in list_product:
-            if product["name"] not in name:
-                return cls(product["name"], product["description"], product["price"], product["quantity"])
+        return cls(product["name"], product["description"], product["price"], product["quantity"])
