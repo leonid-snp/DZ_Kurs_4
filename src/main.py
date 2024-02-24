@@ -1,34 +1,16 @@
 from src.category import Category
 from src.product import Product
+from src.product_iterator import ProductIterator
 from utils.pars_json import creates_instance_class
 
 
 def main():
     instance_category, instance_product = creates_instance_class()
-
-    # print("Выводим список категорий на экран:")
-    # cat = Category(*instance_category[0])
-    # print(cat.name, cat.description, cat.product, sep="\n")
-    #
-    # print("\nДобавим еще один товар")
-    # cat.add_product(Product.creates_product({
-    #     "name": "Samsung Galaxy C23 Ultra",
-    #     "description": "Влагозащищенный корпус",
-    #     "price": 190_000.0,
-    #     "quantity": 5
-    # }, cat.product))
-    #
-    # print("Выводим список категорий на экран:")
-    # print(cat.name, cat.description, cat.product, sep="\n")
-
-
-    print("Выводим список продуктов на экран")
-    pro = Product(*instance_product[1])
-    print(pro.name, pro.description, pro.price, pro.quantity, sep="\n")
-    print("\nХотим поменять цену")
-    pro.price = 200_000.0
-    print(f"Новая цена {pro.price}")
-
+    cat = Category(*instance_category[0])
+    list_ = cat.product
+    pi = ProductIterator(list_)
+    for i in pi:
+        print(i)
 
 
 if __name__ == "__main__":
