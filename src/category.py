@@ -6,15 +6,31 @@ class Category:
     count_category: (int) количество категорий (default 0)
     count_product: (int) количество продуктов (default 0)
     """
-    name: str
-    description: str
-    product: list
     count_category: int = 0
     count_product: int = 0
 
     def __init__(self, name: str, description: str, product: list) -> None:
         self.name = name
         self.description = description
-        self.product = product
+        self.__product = product
         self.count_category += 1
         self.count_product += len(product)
+
+    def add_product(self, value: object) -> None:
+        """
+        Функция добавляет в список продуктов новый продукт
+        """
+        self.__product.append(value.__dict__)
+
+    @property
+    def product(self) -> str:
+        """
+        Функция геттер которая выводит на экран список товаров в специальном формате
+
+        :return (str) список продуктов
+        """
+        list_products = []
+        for product in self.__product:
+            list_products.append(f"{product["name"]}, {product["price"]} руб. Остаток: {product["quantity"]} шт.\n")
+
+        return "".join(list_products)
