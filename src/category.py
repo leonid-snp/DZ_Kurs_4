@@ -20,7 +20,7 @@ class Category:
         """
         Функция добавляет в список продуктов новый продукт
         """
-        self.__product.append(value.__dict__)
+        self.__product.append(value)
 
     @property
     def product(self) -> list:
