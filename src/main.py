@@ -30,5 +30,6 @@ def main():
     print(f"Новая цена {pro.price}")
 
 
+
 if __name__ == "__main__":
     main()

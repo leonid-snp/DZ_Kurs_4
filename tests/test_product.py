@@ -21,3 +21,7 @@ def test_price_product(test_product):
     assert test_product.price == 180_000.0
     test_product.price = 185_000.0
     assert test_product.price == 185_000.0
+
+
+def test_str_product(test_product):
+    assert test_product.__str__() == "Samsung Galaxy C23 Ultra, 180000.0 руб. Остаток: 5 шт."

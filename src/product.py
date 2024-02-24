@@ -12,6 +12,14 @@ class Product:
         self._price = price
         self.quantity = quantity
 
+    def __str__(self) -> str:
+        """
+        Функция отображает определенные данные в строковом формате
+
+        :return (str) название продукта, цена, остаток
+        """
+        return f"{self.name}, {self._price} руб. Остаток: {self.quantity} шт."
+
     @property
     def price(self) -> float:
         """

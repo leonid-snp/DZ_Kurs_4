@@ -16,6 +16,14 @@ class Category:
         self.count_category += 1
         self.count_product += len(product)
 
+    def __str__(self) -> str:
+        """
+        Функция отображает определенные данные в строковом формате
+
+        :return (str) название категории и количество продуктов
+        """
+        return f"{self.name}, количество продуктов: {len(self.__product)} шт."
+
     def add_product(self, value: object) -> None:
         """
         Функция добавляет в список продуктов новый продукт
