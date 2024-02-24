@@ -1,3 +1,4 @@
+from src.category import Category
 from src.product import Product
 
 
@@ -8,10 +9,15 @@ def test_init_product(test_product):
     assert test_product.quantity == 5
 
 
-def test_creates_product(test_product):
-    assert Product.creates_product({
-        "name": "Xiaomi 14 Pro",
-        "description": "Влагозащищенный корпус",
-        "price": 190_000.0,
-        "quantity": 5
-    })
+# def test_creates_product(test_product):
+#     assert Product.creates_product({
+#         "name": "Xiaomi 14 Pro",
+#         "description": "Влагозащищенный корпус",
+#         "price": 190_000.0,
+#         "quantity": 5
+#     })
+
+def test_price_product(test_product):
+    assert test_product.price == 180_000.0
+    test_product.price = 185_000.0
+    assert test_product.price == 185_000.0

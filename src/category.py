@@ -23,14 +23,14 @@ class Category:
         self.__product.append(value.__dict__)
 
     @property
-    def product(self) -> str:
+    def product(self) -> list:
         """
         Функция геттер которая выводит на экран список товаров в специальном формате
 
-        :return (str) список продуктов
+        :return (list) список продуктов
         """
         list_products = []
         for product in self.__product:
-            list_products.append(f"{product["name"]}, {product["price"]} руб. Остаток: {product["quantity"]} шт.\n")
+            list_products.append(f"{product["name"]}, {product["price"]} руб. Остаток: {product["quantity"]} шт.")
 
-        return "".join(list_products)
+        return list_products
