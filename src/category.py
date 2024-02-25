@@ -1,3 +1,6 @@
+from src.product import Product
+
+
 class Category:
     """
     name: (str) название категории
@@ -36,7 +39,10 @@ class Category:
         """
         Функция добавляет в список продуктов новый продукт
         """
-        self.__product.append(value)
+        if not isinstance(value, Product):
+            raise TypeError("Добавлять можно только объекты Product или его наследников")
+
+        self.__product.append(value.__dict__)
 
     @property
     def product(self) -> list:

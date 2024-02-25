@@ -19,10 +19,10 @@ def test_creates_product(test_product):
     })
 
 
-def test_price_product(test_product):
-    assert test_product.price == 180_000.0
-    test_product.price = 185_000.0
-    assert test_product.price == 185_000.0
+def test_get_price_product(test_product):
+    assert test_product.get_price == 180_000.0
+    test_product.get_price = 185_000.0
+    assert test_product.get_price == 185_000.0
 
 
 def test_str_product(test_product):

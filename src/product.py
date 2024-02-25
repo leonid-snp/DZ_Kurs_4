@@ -10,7 +10,7 @@ class Product:
     def __init__(self, name: str, description: str, price: float, quantity: int, color: str=None) -> None:
         self.name = name
         self.description = description
-        self._price = price
+        self.price = price
         self.quantity = quantity
         self.color = color
 
@@ -20,7 +20,7 @@ class Product:
 
         :return (str) название продукта, цена, остаток
         """
-        return f"{self.name}, {self._price} руб. Остаток: {self.quantity} шт."
+        return f"{self.name}, {self.price} руб. Остаток: {self.quantity} шт."
 
     def __len__(self) -> int:
         """
@@ -39,37 +39,37 @@ class Product:
         if type(self) != type(other):
             raise TypeError("Складывать можно только объекты из одинаковых категорий")
 
-        return (self._price * self.quantity) + (other._price * other.quantity)
+        return (self.price * self.quantity) + (other.price * other.quantity)
 
     @property
-    def price(self) -> float:
+    def get_price(self) -> float:
         """
         Геттер для свойства цены
 
         :return (float) цена продукта
         """
-        return self._price
+        return self.price
 
-    @price.setter
-    def price(self, value: float) -> None:
+    @get_price.setter
+    def get_price(self, value: float) -> None:
         """
         Сеттер для свойства цены, устанавливает новое значение если оно больше 0
         """
         if value <= 0:
             print("цена введена некорректная")
-        elif value < self._price:
+        elif value < self.price:
             while True:
                 answer = input("Вы уверены что хотите понизить цену: (y/n)").lower()
                 if answer == "y":
-                    self._price = value
+                    self.price = value
                     break
 
                 elif answer == "n":
-                    self._price = self._price
+                    self.price = self.price
                     break
 
         else:
-            self._price = value
+            self.price = value
 
     @classmethod
     def creates_product(cls, product: dict) -> object:
