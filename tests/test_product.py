@@ -28,6 +28,10 @@ def test_str_product(test_product):
     assert test_product.__str__() == "Samsung Galaxy C23 Ultra, 180000.0 руб. Остаток: 5 шт."
 
 
+def test_len_product(test_product):
+    assert test_product.__len__() == 5
+
+
 def test_add_product(test_product):
     assert test_product.__add__(Product.creates_product({
         "name": "Xiaomi 14 Pro",

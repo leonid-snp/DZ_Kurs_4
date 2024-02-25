@@ -24,6 +24,14 @@ class Category:
         """
         return f"{self.name}, количество продуктов: {len(self.__product)} шт."
 
+    def __len__(self) -> int:
+        """
+        Функция считает количество продуктов
+
+        :return (int) количество продуктов
+        """
+        return len(self.__product)
+
     def add_product(self, value: object) -> None:
         """
         Функция добавляет в список продуктов новый продукт

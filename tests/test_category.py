@@ -15,3 +15,7 @@ def test_product_category(test_category):
 
 def test_str_category(test_category):
     assert test_category.__str__() == "Смартфоны, количество продуктов: 3 шт."
+
+
+def test_len_category(test_category):
+    assert test_category.__len__() == 3

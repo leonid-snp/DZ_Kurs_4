@@ -20,6 +20,14 @@ class Product:
         """
         return f"{self.name}, {self._price} руб. Остаток: {self.quantity} шт."
 
+    def __len__(self) -> int:
+        """
+        Функция считает количесво продукта в наличии
+
+        :return (int) количество продуктов в наличии
+        """
+        return self.quantity
+
     def __add__(self, other) -> float:
         """
         Функция складывает цену и количество продуктов

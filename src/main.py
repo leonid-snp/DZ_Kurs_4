@@ -7,10 +7,6 @@ from utils.pars_json import creates_instance_class
 def main():
     instance_category, instance_product = creates_instance_class()
     cat = Category(*instance_category[0])
-    list_ = cat.product
-    pi = ProductIterator(list_)
-    for i in pi:
-        print(i)
 
 
 if __name__ == "__main__":
