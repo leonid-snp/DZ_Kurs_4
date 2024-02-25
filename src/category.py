@@ -1,3 +1,6 @@
+from src.product import Product
+
+
 class Category:
     """
     name: (str) название категории
@@ -24,11 +27,22 @@ class Category:
         """
         return f"{self.name}, количество продуктов: {len(self.__product)} шт."
 
+    def __len__(self) -> int:
+        """
+        Функция считает количество продуктов
+
+        :return (int) количество продуктов
+        """
+        return len(self.__product)
+
     def add_product(self, value: object) -> None:
         """
         Функция добавляет в список продуктов новый продукт
         """
-        self.__product.append(value)
+        if not isinstance(value, Product):
+            raise TypeError("Добавлять можно только объекты Product или его наследников")
+
+        self.__product.append(value.__dict__)
 
     @property
     def product(self) -> list:

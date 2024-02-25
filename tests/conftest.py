@@ -1,7 +1,9 @@
 import pytest
 from src.category import Category
+from src.lawn_grass import LawnGrass
 from src.product import Product
 from src.product_iterator import ProductIterator
+from src.smartphone import Smartphone
 from utils.pars_json import creates_instance_class
 
 
@@ -28,3 +30,13 @@ def test_pars_json():
 def test_iterator():
     instance_category, instance_product = creates_instance_class()
     return ProductIterator(instance_category[0][2])
+
+
+@pytest.fixture
+def test_smartphone():
+    return Smartphone("Samsung Galaxy", "Хорошая камера", 180_000.0, 5, 2.5, "C23 Ultra", 6, "Серый цвет")
+
+
+@pytest.fixture
+def test_lawn_grass():
+    return LawnGrass("Газон", "Густая красивая трава", 150.0, 200, "Китай", 3.5, "Зеленый цвет")
