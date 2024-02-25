@@ -4,14 +4,80 @@ class Product:
     description: (str) описание продукта
     price: (float) цена товара
     quantity: (int) остаток товара
+    color: (str) цвет продукта (defaold None)
     """
-    name: str
-    description: str
-    price: float
-    quantity: int
 
-    def __init__(self, name: str, description: str, price: float, quantity: int) -> None:
+    def __init__(self, name: str, description: str, price: float, quantity: int, color: str=None) -> None:
         self.name = name
         self.description = description
         self.price = price
         self.quantity = quantity
+        self.color = color
+
+    def __str__(self) -> str:
+        """
+        Функция отображает определенные данные в строковом формате
+
+        :return (str) название продукта, цена, остаток
+        """
+        return f"{self.name}, {self.price} руб. Остаток: {self.quantity} шт."
+
+    def __len__(self) -> int:
+        """
+        Функция считает количесво продукта в наличии
+
+        :return (int) количество продуктов в наличии
+        """
+        return self.quantity
+
+    def __add__(self, other) -> float:
+        """
+        Функция складывает цену и количество продуктов
+
+        :return (float) общая стоимость продуктов
+        """
+        if type(self) != type(other):
+            raise TypeError("Складывать можно только объекты из одинаковых категорий")
+
+        return (self.price * self.quantity) + (other.price * other.quantity)
+
+    @property
+    def get_price(self) -> float:
+        """
+        Геттер для свойства цены
+
+        :return (float) цена продукта
+        """
+        return self.price
+
+    @get_price.setter
+    def get_price(self, value: float) -> None:
+        """
+        Сеттер для свойства цены, устанавливает новое значение если оно больше 0
+        """
+        if value <= 0:
+            print("цена введена некорректная")
+        elif value < self.price:
+            while True:
+                answer = input("Вы уверены что хотите понизить цену: (y/n)").lower()
+                if answer == "y":
+                    self.price = value
+                    break
+
+                elif answer == "n":
+                    self.price = self.price
+                    break
+
+        else:
+            self.price = value
+
+    @classmethod
+    def creates_product(cls, product: dict) -> object:
+        """
+        Классметод который принимает словарь и создает новый объект класса Product
+
+        :product (dict) продукт по которому создаст объект
+
+        :return (object) объект класса Product
+        """
+        return cls(product["name"], product["description"], product["price"], product["quantity"])
