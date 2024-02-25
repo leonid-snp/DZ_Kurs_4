@@ -36,6 +36,9 @@ class Product:
 
         :return (float) общая стоимость продуктов
         """
+        if type(self) != type(other):
+            raise TypeError("Складывать можно только объекты из одинаковых категорий")
+
         return (self._price * self.quantity) + (other._price * other.quantity)
 
     @property
