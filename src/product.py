@@ -4,13 +4,15 @@ class Product:
     description: (str) описание продукта
     price: (float) цена товара
     quantity: (int) остаток товара
+    color: (str) цвет продукта (defaold None)
     """
 
-    def __init__(self, name: str, description: str, price: float, quantity: int) -> None:
+    def __init__(self, name: str, description: str, price: float, quantity: int, color: str=None) -> None:
         self.name = name
         self.description = description
         self._price = price
         self.quantity = quantity
+        self.color = color
 
     def __str__(self) -> str:
         """
