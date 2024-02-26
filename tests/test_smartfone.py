@@ -23,3 +23,14 @@ def test_creates_product_smartphone(test_smartphone):
         "memory": 6,
         "color": "Серый цвет"
     })
+
+
+def test_repr_smartphone(test_smartphone):
+    assert test_smartphone.__repr__() == ("Smartphone(dict_items([('name', 'Samsung Galaxy'),"
+                                          " ('description', 'Хорошая камера'),"
+                                          " ('price', 180000.0),"
+                                          " ('quantity', 5),"
+                                          " ('color', 'Серый цвет'),"
+                                          " ('performance', 2.5),"
+                                          " ('model', 'C23 Ultra'),"
+                                          " ('memory', 6)]))")

@@ -21,3 +21,12 @@ def test_creates_product_smartphone(test_smartphone):
         "germination_period": 3.5,
         "color": "Зеленый цвет"
     })
+
+
+def test_repr_lawn_grass(test_lawn_grass):
+    assert test_lawn_grass.__repr__() == ("LawnGrass(dict_items([('name', 'Газон'),"
+                                          " ('description', 'Густая красивая трава'),"
+                                          " ('price', 150.0), ('quantity', 200),"
+                                          " ('color', 'Зеленый цвет'),"
+                                          " ('manufacturer', 'Китай'),"
+                                          " ('germination_period', 3.5)]))")

@@ -43,6 +43,14 @@ def test_add_product(test_product):
     })) == 1_850_000.0
 
 
+def test_repr_product(test_product):
+    assert test_product.__repr__() == ("Product(dict_items([('name', 'Samsung Galaxy C23 Ultra'),"
+                                       " ('description', '256GB, Серый цвет, 200MP камера'),"
+                                       " ('price', 180000.0),"
+                                       " ('quantity', 5),"
+                                       " ('color', None)]))")
+
+
 def test_add_raise_product(test_product, test_smartphone):
     with pytest.raises(TypeError):
         assert test_product.__add__(test_smartphone) == 1_800_000.0

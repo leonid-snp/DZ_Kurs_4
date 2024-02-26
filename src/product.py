@@ -1,7 +1,8 @@
 from src.abstract_product import AbstractProduct
+from src.mixin_repr import MixinRepr
 
 
-class Product(AbstractProduct):
+class Product(AbstractProduct, MixinRepr):
     """
     name: (str) название продукта
     description: (str) описание продукта
@@ -24,6 +25,14 @@ class Product(AbstractProduct):
         :return (str) название продукта, цена, остаток
         """
         return f"{self.name}, {self.price} руб. Остаток: {self.quantity} шт."
+
+    def __repr__(self):
+        """
+        Функция возвращает строковое отображение объекта при его создании
+
+        :return (str) объект и его свойства
+        """
+        return super().__repr__()
 
     def __len__(self) -> int:
         """
