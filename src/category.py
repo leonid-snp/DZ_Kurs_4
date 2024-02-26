@@ -42,7 +42,7 @@ class Category:
         if not isinstance(value, Product):
             raise TypeError("Добавлять можно только объекты Product или его наследников")
 
-        self.__product.append(value.__dict__)
+        self.__product.append(value)
 
     @property
     def product(self) -> list:
@@ -53,6 +53,6 @@ class Category:
         """
         list_products = []
         for product in self.__product:
-            list_products.append(f"{product["name"]}, {product["price"]} руб. Остаток: {product["quantity"]} шт.")
+            list_products.append(f"{Product.__str__(product)}")
 
         return list_products
