@@ -32,6 +32,11 @@ def test_len_category(test_category):
     assert test_category.__len__() == 3
 
 
-def test_add_product_in_category_raise(test_category):
+def test_add_product_in_category_type_error(test_category):
     with pytest.raises(TypeError):
         test_category.add_product(test_category)
+
+
+def test_add_product_in_category_value_error(test_category, test_raise_product):
+    with pytest.raises(ValueError):
+        test_category.add_product(test_raise_product)

@@ -43,6 +43,9 @@ class Category(AbstractLog):
         if not isinstance(value, Product):
             raise TypeError("Добавлять можно только объекты Product или его наследников")
 
+        if value.quantity == 0:
+            raise ValueError("Товар с нулевым количеством не может быть добавлен")
+
         self.__product.append(value)
 
     @property

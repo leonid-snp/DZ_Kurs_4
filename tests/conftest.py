@@ -1,6 +1,7 @@
 import pytest
 from src.lawn_grass import LawnGrass
 from src.order import Order
+from src.product import Product
 from src.product_iterator import ProductIterator
 from src.smartphone import Smartphone
 from utils.pars_json import creates_instance_class
@@ -42,3 +43,8 @@ def test_lawn_grass():
 @pytest.fixture
 def test_order():
     return Order("Samsung Galaxy", 5, 180_000.0)
+
+
+@pytest.fixture
+def test_raise_product():
+    return Product("Samsung Galaxy C23 Ultra", "256GB, Серый цвет, 200MP камера", 180_000.0, 0)
