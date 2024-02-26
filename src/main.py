@@ -7,13 +7,7 @@ from utils.pars_json import creates_instance_class
 
 
 def main():
-    instance_category, instance_product = creates_instance_class()
-    print(repr(Product.creates_product({
-        "name": "Xiaomi 14 Pro",
-        "description": "Влагозащищенный корпус",
-        "price": 190_000.0,
-        "quantity": 5
-    })))
+    pass
 
 
 if __name__ == "__main__":

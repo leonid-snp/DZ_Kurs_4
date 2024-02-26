@@ -54,3 +54,11 @@ def test_repr_product(test_product):
 def test_add_raise_product(test_product, test_smartphone):
     with pytest.raises(TypeError):
         assert test_product.__add__(test_smartphone) == 1_800_000.0
+
+
+def test_get_average_product_price(test_product):
+    assert test_product.get_average_product_price() == 180_000.0
+
+
+def test_get_average_product_price_zero_division(test_raise_product):
+    assert test_raise_product.get_average_product_price() == 0.0
