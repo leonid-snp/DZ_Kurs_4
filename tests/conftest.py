@@ -1,7 +1,6 @@
 import pytest
-from src.category import Category
 from src.lawn_grass import LawnGrass
-from src.product import Product
+from src.order import Order
 from src.product_iterator import ProductIterator
 from src.smartphone import Smartphone
 from utils.pars_json import creates_instance_class
@@ -10,15 +9,13 @@ from utils.pars_json import creates_instance_class
 @pytest.fixture
 def test_category():
     instance_category, instance_product = creates_instance_class()
-    for category in instance_category:
-        return Category(*category)
+    return instance_category[0]
 
 
 @pytest.fixture
 def test_product():
     instance_category, instance_product = creates_instance_class()
-    for product in instance_product:
-        return Product(*product)
+    return instance_product[0]
 
 
 @pytest.fixture
@@ -29,7 +26,7 @@ def test_pars_json():
 @pytest.fixture
 def test_iterator():
     instance_category, instance_product = creates_instance_class()
-    return ProductIterator(instance_category[0][2])
+    return ProductIterator(instance_category[0].product)
 
 
 @pytest.fixture
@@ -40,3 +37,8 @@ def test_smartphone():
 @pytest.fixture
 def test_lawn_grass():
     return LawnGrass("Газон", "Густая красивая трава", 150.0, 200, "Китай", 3.5, "Зеленый цвет")
+
+
+@pytest.fixture
+def test_order():
+    return Order("Samsung Galaxy", 5, 180_000.0)

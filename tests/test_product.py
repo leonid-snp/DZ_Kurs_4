@@ -1,5 +1,6 @@
 import pytest
 
+
 from src.product import Product
 
 
@@ -40,6 +41,14 @@ def test_add_product(test_product):
         "price": 190_000.0,
         "quantity": 5
     })) == 1_850_000.0
+
+
+def test_repr_product(test_product):
+    assert test_product.__repr__() == ("Product(dict_items([('name', 'Samsung Galaxy C23 Ultra'),"
+                                       " ('description', '256GB, Серый цвет, 200MP камера'),"
+                                       " ('price', 180000.0),"
+                                       " ('quantity', 5),"
+                                       " ('color', None)]))")
 
 
 def test_add_raise_product(test_product, test_smartphone):
