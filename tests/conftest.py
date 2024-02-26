@@ -1,5 +1,6 @@
 import pytest
 from src.lawn_grass import LawnGrass
+from src.order import Order
 from src.product_iterator import ProductIterator
 from src.smartphone import Smartphone
 from utils.pars_json import creates_instance_class
@@ -36,3 +37,8 @@ def test_smartphone():
 @pytest.fixture
 def test_lawn_grass():
     return LawnGrass("Газон", "Густая красивая трава", 150.0, 200, "Китай", 3.5, "Зеленый цвет")
+
+
+@pytest.fixture
+def test_order():
+    return Order("Samsung Galaxy", 5, 180_000.0)

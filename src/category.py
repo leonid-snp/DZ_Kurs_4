@@ -1,7 +1,8 @@
+from src.abstractlog import AbstractLog
 from src.product import Product
 
 
-class Category:
+class Category(AbstractLog):
     """
     name: (str) название категории
     description: (str) описание категории
