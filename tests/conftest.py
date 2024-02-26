@@ -1,4 +1,6 @@
 import pytest
+
+from src.category import Category
 from src.lawn_grass import LawnGrass
 from src.order import Order
 from src.product import Product
@@ -48,3 +50,12 @@ def test_order():
 @pytest.fixture
 def test_raise_product():
     return Product("Samsung Galaxy C23 Ultra", "256GB, Серый цвет, 200MP камера", 180_000.0, 0)
+
+
+@pytest.fixture
+def test_raise_category():
+    return Category("Смартфоны", "Лучший дизайн", [
+        Product('Samsung Galaxy C23 Ultra', '256GB, Серый цвет, 200MP камера', 180000.0, 0, None),
+        Product('Iphone 15', '512GB, Gray space', 210000.0, 0, None),
+        Product('Xiaomi Redmi Note 11', '1024GB, Синий', 31000.0, 0, None)
+    ])

@@ -95,16 +95,3 @@ class Product(AbstractProduct, MixinRepr):
 
         return cls(product["name"], product["description"], product["price"], product["quantity"])
 
-    def get_average_product_price(self) -> float:
-        """
-        Функция считает средний ценник всех товаров
-
-        :return (float) средняя цена товара
-        """
-        try:
-            result = round(((self.price * self.quantity) / self.quantity), 1)
-        except ZeroDivisionError:
-            return 0.0
-        else:
-            return result
-
