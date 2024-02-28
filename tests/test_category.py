@@ -32,6 +32,19 @@ def test_len_category(test_category):
     assert test_category.__len__() == 3
 
 
-def test_add_product_in_category_raise(test_category):
+def test_add_product_in_category_type_error(test_category):
     with pytest.raises(TypeError):
         test_category.add_product(test_category)
+
+
+def test_add_product_in_category_value_error(test_category, test_raise_product):
+    with pytest.raises(ValueError):
+        test_category.add_product(test_raise_product)
+
+
+def test_get_average_product_price_category(test_category):
+    assert test_category.get_average_product_price() == 111_629.6
+
+
+def test_get_average_product_price_zero_division_category(test_raise_category):
+    assert test_raise_category.get_average_product_price() == 0.0
