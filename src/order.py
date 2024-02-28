@@ -1,3 +1,4 @@
+from exceptions.exceptions import ProductQuantityZeroError
 from src.abstractlog import AbstractLog
 
 
@@ -11,6 +12,10 @@ class Order(AbstractLog):
     """
     def __init__(self, product: str, count_product_pay: int, price: float):
         self.__product = product
+        if count_product_pay == 0:
+            raise ProductQuantityZeroError()
+        else:
+            self.count_product_pay = count_product_pay
         self.count_product_pay = count_product_pay
         self.price = price
 
