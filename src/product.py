@@ -17,6 +17,7 @@ class Product(AbstractProduct, MixinRepr):
         self.price = price
         self.quantity = quantity
         self.color = color
+        super().__init__()
 
     def __str__(self) -> str:
         """

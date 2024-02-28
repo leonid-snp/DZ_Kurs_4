@@ -16,12 +16,12 @@ class Smartphone(Product, AbstractProduct):
     color (str) цвет смартфона
     """
 
-    def __init__(self, name: str, description: str, price: float, quantity: int, performance: float, model: str,
-                 memory: int, color: str):
-        super().__init__(name, description, price, quantity, color)
+    def __init__(self, name: str, description: str, price: float, quantity: int,
+                 performance: float, model: str, memory: int, color: str):
         self.performance = performance
         self.model = model
         self.memory = memory
+        super().__init__(name, description, price, quantity, color)
 
     @classmethod
     def creates_product(cls, product: dict) -> object:

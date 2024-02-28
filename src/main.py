@@ -7,13 +7,9 @@ from utils.pars_json import creates_instance_class
 
 
 def main():
-    instance_category, instance_product = creates_instance_class()
-    print(repr(Product.creates_product({
-        "name": "Xiaomi 14 Pro",
-        "description": "Влагозащищенный корпус",
-        "price": 190_000.0,
-        "quantity": 5
-    })))
+    Product("Samsung Galaxy C23 Ultra", "256GB, Серый цвет, 200MP камера", 180_000.0, 0)
+    Smartphone("Samsung Galaxy", "Хорошая камера", 180_000.0, 5, 2.5, "C23 Ultra", 6, "Серый цвет")
+    LawnGrass("Газон", "Густая красивая трава", 150.0, 200, "Китай", 3.5, "Зеленый цвет")
 
 
 if __name__ == "__main__":

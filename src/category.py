@@ -43,6 +43,9 @@ class Category(AbstractLog):
         if not isinstance(value, Product):
             raise TypeError("Добавлять можно только объекты Product или его наследников")
 
+        if value.quantity == 0:
+            raise ValueError("Товар с нулевым количеством не может быть добавлен")
+
         self.__product.append(value)
 
     @property
@@ -57,3 +60,22 @@ class Category(AbstractLog):
             list_products.append(f"{Product.__str__(product)}")
 
         return list_products
+
+    def get_average_product_price(self) -> float:
+        """
+        Функция считает средний ценник всех товаров
+
+        :return (float) средняя цена товара
+        """
+        try:
+            price = 0
+            quantity = 0
+            for product in self.__product:
+                price += (product.price * product.quantity)
+                quantity += product.quantity
+
+            result = round((price / quantity), 1)
+        except ZeroDivisionError:
+            return 0.0
+        else:
+            return result
