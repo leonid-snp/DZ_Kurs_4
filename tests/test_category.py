@@ -1,5 +1,7 @@
 import pytest
 
+from exceptions.exceptions import ProductQuantityZeroError
+from src.category import Category
 from src.product import Product
 
 
@@ -38,7 +40,7 @@ def test_add_product_in_category_type_error(test_category):
 
 
 def test_add_product_in_category_value_error(test_category, test_raise_product):
-    with pytest.raises(ValueError):
+    with pytest.raises(ProductQuantityZeroError):
         test_category.add_product(test_raise_product)
 
 
@@ -48,3 +50,10 @@ def test_get_average_product_price_category(test_category):
 
 def test_get_average_product_price_zero_division_category(test_raise_category):
     assert test_raise_category.get_average_product_price() == 0.0
+
+
+def test_raise_product_quantity_zero_error_category():
+    with pytest.raises(ProductQuantityZeroError):
+        Category("Смартфоны", "Лучший дизайн", [
+            Product('Samsung Galaxy C23 Ultra', '256GB, Серый цвет, 200MP камера', 180000.0, 0, None)
+        ])

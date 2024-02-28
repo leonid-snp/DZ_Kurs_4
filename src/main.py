@@ -1,16 +1,24 @@
+from exceptions.exceptions import ProductQuantityZeroError
 from src.category import Category
-from src.lawn_grass import LawnGrass
+from src.order import Order
 from src.product import Product
-from src.product_iterator import ProductIterator
-from src.smartphone import Smartphone
-from utils.pars_json import creates_instance_class
 
 
 def main():
-    Product("Samsung Galaxy C23 Ultra", "256GB, Серый цвет, 200MP камера", 180_000.0, 0)
-    Smartphone("Samsung Galaxy", "Хорошая камера", 180_000.0, 5, 2.5, "C23 Ultra", 6, "Серый цвет")
-    LawnGrass("Газон", "Густая красивая трава", 150.0, 200, "Китай", 3.5, "Зеленый цвет")
+    cat = Category("Смартфоны", "Лучший дизайн", [
+        Product('Samsung Galaxy C23 Ultra', '256GB, Серый цвет, 200MP камера', 180000.0, 1),
+    ])
+    cat.add_product(Product('Iphone 15', '512GB, Gray space', 210000.0, 0))
+
+    order = Order("Samsung Galaxy", 1, 180_000.0)
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except ProductQuantityZeroError as e:
+        print(e)
+    else:
+        print("Товар был успешно добавлен")
+    finally:
+        print("Обработка добавления товара завершена")
