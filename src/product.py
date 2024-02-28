@@ -17,6 +17,7 @@ class Product(AbstractProduct, MixinRepr):
         self.price = price
         self.quantity = quantity
         self.color = color
+        super().__init__()
 
     def __str__(self) -> str:
         """
@@ -94,4 +95,3 @@ class Product(AbstractProduct, MixinRepr):
         """
 
         return cls(product["name"], product["description"], product["price"], product["quantity"])
-
