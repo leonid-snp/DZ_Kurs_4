@@ -56,11 +56,17 @@ class Category(AbstractLog):
 
         :return (list) список продуктов
         """
-        list_products = []
-        for product in self.__product:
-            list_products.append(f"{Product.__str__(product)}")
+        return [Product.__str__(product) for product in self.__product]
 
-        return list_products
+    @property
+    def copy_product(self) -> list:
+        """
+        Функция геттер которая копирует список продуктов
+        для дальнейшей работы
+
+        :return (list) список продуктов
+        """
+        return [product for product in self.__product]
 
     def get_average_product_price(self) -> float:
         """
