@@ -17,11 +17,7 @@ class Category(AbstractLog):
     def __init__(self, name: str, description: str, product: list) -> None:
         self.name = name
         self.description = description
-        for elem in product:
-            if elem.quantity == 0:
-                raise ProductQuantityZeroError()
-            else:
-                self.__product = product
+        self.__product = product
         self.count_category += 1
         self.count_product += len(product)
 
@@ -48,9 +44,8 @@ class Category(AbstractLog):
         if not isinstance(value, Product):
             raise TypeError("Добавлять можно только объекты Product или его наследников")
 
-        if value.quantity == 0:
-            raise ProductQuantityZeroError("ProductQuantityZeroError: "
-                                           "Товар с нулевым количеством не может быть добавлен")
+        if not value.quantity > 0:
+            raise ProductQuantityZeroError("ProductQuantityZeroError: Невозможно посчитать количество товара.")
 
         self.__product.append(value)
 
@@ -81,7 +76,7 @@ class Category(AbstractLog):
                 quantity += product.quantity
 
             result = round((price / quantity), 1)
-        except ProductQuantityZeroError:
+        except ZeroDivisionError:
             return 0.0
         else:
             return result
