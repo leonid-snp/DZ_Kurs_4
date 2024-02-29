@@ -12,10 +12,6 @@ class Order(AbstractLog):
     """
     def __init__(self, product: str, count_product_pay: int, price: float):
         self.__product = product
-        if count_product_pay == 0:
-            raise ProductQuantityZeroError()
-        else:
-            self.count_product_pay = count_product_pay
         self.count_product_pay = count_product_pay
         self.price = price
 
@@ -43,3 +39,15 @@ class Order(AbstractLog):
         :return (str) продукт
         """
         return self.__product
+
+    @classmethod
+    def create_order(cls, product: dict) -> object:
+        """
+        Класс метод который создает новый объект Заказа из словаря
+
+        :return (object) новый объект класса Заказы
+        """
+        if not product["quantity"] > 0:
+            raise ProductQuantityZeroError()
+
+        return cls(product["name"], product["quantity"], product["price"])

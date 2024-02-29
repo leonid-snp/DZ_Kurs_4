@@ -21,6 +21,18 @@ def test_product_order(test_order):
     assert test_order.product == "Samsung Galaxy"
 
 
-def test_product_raise_order():
+def test_create_raise_order():
     with pytest.raises(ProductQuantityZeroError):
-        assert Order("Samsung Galaxy", 0, 180_000.0)
+        assert Order.create_order({
+            "name": "Samsung Galaxy",
+            "quantity": 0,
+            "price": 180_000.0
+        })
+
+
+def test_create_order():
+    assert Order.create_order({
+        "name": "Samsung Galaxy",
+        "quantity": 1,
+        "price": 180_000.0
+    })
