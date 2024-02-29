@@ -59,3 +59,13 @@ def test_raise_category():
         Product('Iphone 15', '512GB, Gray space', 210000.0, 0, None),
         Product('Xiaomi Redmi Note 11', '1024GB, Синий', 31000.0, 0, None)
     ])
+
+
+@pytest.fixture
+def test_create_product():
+    list_product = [
+        Product('Samsung Galaxy C23 Ultra', '256GB, Серый цвет, 200MP камера', 180000.0, 5, None),
+        Product('Iphone 15', '512GB, Gray space', 210000.0, 8, None),
+        Product('Xiaomi Redmi Note 11', '1024GB, Синий', 31000.0, 14, None)
+    ]
+    return list_product
